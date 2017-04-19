@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class MenuController : MonoBehaviour {
     public GameObject optionsMenu;
     public GameObject loadMenu;
 
+    public Animator anim;
+    public Image fadeImage;
 
     public void HideMainMenu() {
         mainMenu.SetActive(false);
@@ -32,7 +35,14 @@ public class MenuController : MonoBehaviour {
     }
 
     public void QuitGame() {
-        Application.Quit();
+        fadeImage.raycastTarget = true;
+        anim.SetTrigger("FadeOut");
+        //Application.Quit();
+        Invoke("Quit", 1f);
+    }
+
+    void Quit() {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
 }
