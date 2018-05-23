@@ -15,7 +15,9 @@ public class PlayerHealth : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.D)) {
             health -= 10;
         }
-        healthBar.value = health;
-        manaBar.value = mana;
+		if(healthBar != null)
+            healthBar.value = health;
+		if(manaBar != null)
+			manaBar.value = mana;
 	}
 }
